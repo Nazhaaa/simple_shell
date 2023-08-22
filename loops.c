@@ -5,31 +5,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 /*
- * @buffer:pointer
- * @arg:array
- * @size_t:size
- * @Read:read
- * @pid:process id 
- * @stat:statut
+ * @buffer: pointer
+ * @arg: array
+ * @siz: size_t
+ * @Read: read
+ * @pid: process id
+ * @stat: status
  */
-int main (void)
+int main(void)
 {
-char *buffer = NULL , *arg[] = {NULL,NULL};
+char *buffer = NULL, *arg[] = {NULL, NULL};
 size_t siz;
 int Read, pid, stat;
 while (1)
 {
-write (STDOUT_FILEND,"$ ",2);
-Read = getline(&buffer,&siz,stdin);
-if(Read >= 0)
+write(STDOUT_FILEND, "$ ", 2);
+Read = getline(&buffer, &siz, stdin);
+if (Read >= 0)
 {
-buffer[Read -1] = '\0';	
+buffer[Read - 1] = '\0';
 arg[0] = buffer;
 pid = fork();
 if (pid == 0)
 execve(buffer, arg, NULL);
-else if (pid > 1)
-wait(&stat);	
+else if (pid > 0)
+wait(&stat);
 free(buffer);
 buffer = NULL;
 }
@@ -39,7 +39,6 @@ free(buffer);
 break;
 }
 }
-return(0);
-}	
-
+return (0);
+}
 
