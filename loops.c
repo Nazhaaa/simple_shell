@@ -5,11 +5,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define STDOUT_FILEND 1
-
-
-
-
-
+/*
+ * @buffer:pointer
+ * @arg:array
+ * @size_t:size
+ * @Read:read
+ * @pid:pid
+ * @stat:statut
+ */
 int main (void)
 {
 char *buffer = NULL , *arg[] = {NULL,NULL};
