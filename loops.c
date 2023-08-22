@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define STDOUT_FILEND 1
 /*
  * @buffer:pointer
  * @arg:array
