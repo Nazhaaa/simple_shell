@@ -9,7 +9,7 @@
  * @arg:array
  * @size_t:size
  * @Read:read
- * @pid:pid
+ * @pid:process id 
  * @stat:statut
  */
 int main (void)
