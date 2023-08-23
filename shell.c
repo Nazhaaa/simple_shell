@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 /**
- * main - Entry point of the custom shell program.
+ *shell_main - Entry point of the custom shell program.
  * This program implements a basic custom shell that reads user input,
  * parses the input into tokens, and attempts to execute the specified command.
  * It supports multiple command-line arguments separated by spaces or tabs.
@@ -20,7 +20,7 @@
  * pid: Process ID of the child process.
  *  Return: Always 0 (Success).
  */
-int main(void)
+int shell_main(void)
 {
 char *buffer = NULL;
 size_t siz = 0, i = 0;

@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * main - Entry point of the interactive shell program.
+ * pompt_main - Entry point of the interactive shell program.
  * This program implements a simple interactive shell that displays
  * a command prompt, reads user input, processes the entered command,
  * and waits for the command to complete before prompting for the next one.
@@ -19,7 +19,7 @@
  * stat: Status of child process.
  * Return: Always 0 (Success).
  */
-int main(void)
+int pompt_main(void)
 {
 char *buffer = NULL, *arg[] = {NULL, NULL};
 size_t siz;
