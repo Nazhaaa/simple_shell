@@ -7,4 +7,5 @@
 #include <stdlib.h>
 #define STDOUT_FILEND 1
 int main(void);
+int main();
 #endif
