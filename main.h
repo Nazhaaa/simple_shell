@@ -6,6 +6,5 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define STDOUT_FILEND 1
-int main(void);
-int main();
+int main(int ac, char **av, char **envir);
 #endif
