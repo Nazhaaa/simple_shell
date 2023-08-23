@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 /*
+ * main - entry point of program.
  * @void:return
  * @buffer: pointer
  * @arg: array
@@ -12,6 +13,7 @@
  * @Read: read
  * @pid: process id
  * @stat: status
+ * Return: sucess
  */
 int main(void)
 {
