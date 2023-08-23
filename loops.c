@@ -4,27 +4,39 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-/*
- * main - entre pointe
- * @ac:ac
- * @av:poin
- * @buffer:
- * @siz:size
- * @Read:read
- * Return:0 sucess
- */
-int main(int ac, char **av)
+#include <string.h>
+int main()
 {
-(void)ac;
 char *buffer = NULL;
-size_t siz = 0;
+size_t siz = 0 ,i = 0;
 int Read = 0;
+char *token;
+char **array;
+int stat;
+pid_t pid ;
+array = malloc (sizeof(char *)*1024);
+while(1)
+{
 write(STDOUT_FILEND, "$ ", 2);
 Read = getline(&buffer, &siz, stdin);
-if (Read == -1)
-perror("getlin");
-buffer[Read - 1] = '\0';
-printf("%s\n", buffer);
-return (0);
+token = strtok (buffer, "\t\n");
+while(token)
+{
+array[i] = token;
+token = strtok (NULL, "\t\n");
+i++;
+}
+array [i] = NULL;
+pid = fork();
+if (pid == 0)
+{
+if (execve(array[0], array = NULL) == -1)
+perror ("execve");
+}
+else
+wait (&stat);
+i = 0;
+free(array);
+}
 }
 
