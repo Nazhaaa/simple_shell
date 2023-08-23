@@ -5,43 +5,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 /*
- * main - entry point of program.
- * @void:return
- * @buffer: pointer
- * @arg: array
- * @siz: size_t
- * @Read: read
- * @pid: process id
- * @stat: status
- * Return: sucess
+ * main - entre pointe
+ * @ac:ac
+ * @av:poin
+ * @buffer:
+ * @siz:size
+ * @Read:read
+ * Return:0 sucess
  */
-int main(void)
+int main(int ac, char **av)
 {
-char *buffer = NULL, *arg[] = {NULL, NULL};
-size_t siz;
-int Read, pid, stat;
-while (1)
-{
+(void)ac;
+char *buffer = NULL;
+size_t siz = 0;
+int Read = 0;
 write(STDOUT_FILEND, "$ ", 2);
 Read = getline(&buffer, &siz, stdin);
-if (Read >= 0)
-{
+if (Read == -1)
+perror("getlin");
 buffer[Read - 1] = '\0';
-arg[0] = buffer;
-pid = fork();
-if (pid == 0)
-execve(buffer, arg, NULL);
-else if (pid > 0)
-wait(&stat);
-free(buffer);
-buffer = NULL;
-}
-else
-{
-free(buffer);
-break;
-}
-}
+printf("%s\n", buffer);
 return (0);
 }
 
