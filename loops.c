@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 /*
+ * @void:return
  * @buffer: pointer
  * @arg: array
  * @siz: size_t
@@ -22,7 +23,7 @@ while (1)
 write(STDOUT_FILEND, "$ ", 2);
 Read = getline(&buffer, &siz, stdin);
 if (Read >= 0)
-{	
+{
 buffer[Read - 1] = '\0';
 arg[0] = buffer;
 pid = fork();
