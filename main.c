@@ -11,12 +11,12 @@
  * and waits for the command to complete before prompting for the next one.
  *  It initializes the shell environment, handles user interactions,
  * executes commands in child processes, and manages their status.
- * @buffer: Pointer
- * @arg: Array
- * @siz: Size of the input buffer.
- * @Read: Number of characters read from input.
- * @pid: Process ID of child process.
- * @stat: Status of child process.
+ * buffer: Pointer
+ * arg: Array
+ * siz: Size of the input buffer.
+ * Read: Number of characters read from input.
+ * pid: Process ID of child process.
+ * stat: Status of child process.
  * Return: Always 0 (Success).
  */
 int main(void)
