@@ -19,7 +19,7 @@
  * stat: Status of child process.
  * Return: Always 0 (Success).
  */
-int pompt_main(void)
+int main(void)
 {
 char *buffer = NULL, *arg[] = {NULL, NULL};
 size_t siz;
