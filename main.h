@@ -6,8 +6,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define STDOUT_FILEND 1
-int main(int ac, char **av, char **envir);
+char *_getenv (const char *name);
 int exit_main(void);
 int shell_main(void);
 int pompt_main(void);
+unsigned int check_delim(char c, const char *str);
+char *_strtok(char *stri, const char *del);
 #endif
