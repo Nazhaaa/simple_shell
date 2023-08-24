@@ -7,6 +7,5 @@
 #include <string.h>
 #include <stdlib.h>
 #define STDOUT_FILEND 1
-int builtin(char **command, char *pointer);
-int main(void);
+int main(int argc, char *argv[]);
 #endif
