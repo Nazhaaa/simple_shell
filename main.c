@@ -1,66 +1,51 @@
 #include "main.h"
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
 /**
- * main - Entry point of the interactive shell program.
- * This program implements a simple interactive shell that displays
- * a command prompt, reads user input, processes the entered command,
- * and waits for the command to complete before prompting for the next one.
- *  It initializes the shell environment, handles user interactions,
- * executes commands in child processes, and manages their status.
- * buffer: Pointer
- * arg: Array
- * siz: Size of the input buffer.
- * Read: Number of characters read from input.
- * pid: Process ID of child process.
- * stat: Status of child process.
- * argIndex:index
- * token:token
- * Return: Always 0 (Success).
+ * main - the main prog
+ * @argc: input
+ * @argv: input
+ * Return: 0
  */
-int main(void)
+
+int main(int argc, char *argv[])
 {
-char *buffer = NULL, *arg[] = {NULL, NULL};
-size_t siz;
-int Read, pid, stat;
-int argIndex = 0;
-char *token;
-while (1)
-{
-write(STDOUT_FILEND, "$ ", 2);
-Read = getline(&buffer, &siz, stdin);
-if (Read >= 0)
-{
-buffer[Read - 1] = '\0';
-token = strtok(buffer, " ");
-while (token != NULL)
-{
-arg[argIndex++] = token;
-token = strtok(NULL, " ");
-}
-arg[argIndex] = NULL;
-pid = fork();
-if (pid == 0)
-{
-execve(arg[0], arg, NULL);
-perror("execve");
-exit(1);
-}
-else if (pid > 0)
-{
-wait(&stat);
-}
-free(buffer);
-buffer = NULL;
-}
-else
-{
-free(buffer);
-break;
-}
-}
-return (0);
+	char *cmd = NULL, *args[MCL];
+	size_t cmd_size = 0;
+	ssize_t cmd_len;
+	pid_t pid;
+
+	(void) argc;
+	while (1)
+	{
+		_prompt();
+		cmd_len = getline(&cmd, &cmd_size, stdin);
+		if (cmd_len == -1)
+		{
+			printf("\n");
+			break;
+		}
+		cmd[cmd_len - 1] = '\0';
+		_ext(cmd);
+		_printenv(cmd);
+		_tokenize(args, cmd);
+		pid = fork();
+		if (pid < 0)
+		{
+			perror("Fork faild");
+			exit(1);
+		}
+		else if (pid == 0)
+		{
+			args[0] = cmd;
+			args[1] = NULL;
+			execve(cmd, args, NULL);
+			printf("%s: No such file or directory\n", argv[0]);
+			exit(1);
+		}
+		else
+		{
+			wait(NULL);
+		}
+	}
+	free(cmd);
+	return (0);
 }
