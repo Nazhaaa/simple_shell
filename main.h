@@ -27,8 +27,8 @@ int print_env(char **env, int *exit_st);
 char *cpy_env(char **env);
 
 /* built- execute functions */
-void built_ins(char *c_lin, char **args, char **env, int *exit_st);
-void exec_env(int status, char **args, int *exit_st, int *taly);
+void built(char *c, char **args, char **env, int *exit);
+void exec(int stat, char **args, int *exit, int *tal);
 
 /* strings  functions */
 int str_len(char *s);
